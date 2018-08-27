@@ -60,6 +60,8 @@ try:
 except AttributeError:
     numpy_include = np.get_numpy_include()
 
+print(numpy_include)
+
 def customize_compiler_for_nvcc(self):
     """inject deep into distutils to customize how the dispatch
     to gcc/nvcc works.
@@ -110,6 +112,7 @@ ext_modules = [
         "utils.cython_bbox",
         ["utils/bbox.pyx"],
         extra_compile_args={'gcc': ["-Wno-cpp", "-Wno-unused-function"]},
+	include_dirs=[numpy_include]
     ),
     Extension(
         "utils.cpu_nms",
@@ -118,6 +121,8 @@ ext_modules = [
         include_dirs = [numpy_include]
     )
 ]
+
+
 
 setup(
     name='fast_rcnn',

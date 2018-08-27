@@ -1,0 +1,6 @@
+*.pyc
+*.so
+checkpoints/
+data/
+*.gv
+*.pdf
